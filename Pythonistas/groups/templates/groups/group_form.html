@@ -1,0 +1,28 @@
+{% extends "groups/group_base.html" %}
+{% load staticfiles %}
+
+{% block group_content %}
+  <head>
+        <title>{% block head_title %}Create Group{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    </head>
+    <body>
+      <div class="main-header">
+      <form method="post">{% csrf_token %}
+
+        <fieldset>
+          <legend><span class="number">{{ group.slug }}</span>&nbsp;Create a New Group</legend>
+          <label for="name">Name:</label>
+          {{form.name}}
+
+          <label for="description">Description:</label>
+          {{ form.description }}
+        </fieldset>
+
+        <input class="button" type="submit" value="Create" />
+      </form>
+    </div>
+    </body>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{% block head_title%}Login Form{% endblock %}</title>
+      <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+      
+      <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  </head>
+  <body>
+    <div class="main-header">
+    <form method="post">{% csrf_token %}
+
+      <fieldset>
+        <legend><span class="number">2</span>&nbsp;Login</legend>
+        <label for="name">Name:</label>
+        {{form.username}}
+
+        <label for="password">Password:</label>
+        {{ form.password }}
+      </fieldset>
+
+      <input class="button" type="submit" value="Login" />
+    </form>
+  </div>
+  </body>
+{% endblock %}

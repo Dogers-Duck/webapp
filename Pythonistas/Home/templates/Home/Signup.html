@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{% block head_title %}Sign Up Form{% endblock %}</title>
+      <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+      
+      <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+      <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    <div class="main-header">
+    <form method="post">{% csrf_token %}
+
+      <fieldset>
+        <legend><span class="number">1</span>&nbsp;Sign up</legend>
+        <label for="name">Name:</label>
+        {{form.username}}
+
+        <label for="mail">Email:</label>
+        {{ form.email }}
+
+        <label for="password">Password:</label>
+        {{ form.password1 }}
+
+        <label for="password"> Re-enter-Password:</label>
+        {{ form.password2 }}
+      </fieldset>
+
+      <input class="button" type="submit" value="Sign Up" />
+    </form>
+  </div>
+  </body>
+{% endblock %}

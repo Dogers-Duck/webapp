@@ -1,0 +1,29 @@
+{% extends "posts/post_base.html" %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+<head>
+			<title>{% block head_title %}Create Post{% endblock %}</title>
+			<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+			<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+	</head>
+	<body>
+		<div class="main-header">
+		<form method="post">{% csrf_token %}
+
+			<fieldset>
+				<legend><span class="number"></span>&nbsp;Create a New Post</legend>
+				<label for="name">Message:</label>
+				{{form.message}}
+
+				<label for="description">Group:</label>
+				{{ form.group }}
+			</fieldset>
+
+			<input class="button" type="submit" value="Create" />
+		</form>
+	</div>
+	</body>
+{% endblock %}

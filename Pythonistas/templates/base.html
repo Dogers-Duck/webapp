@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Beginners Guide to Python">
+  <meta name="keywords" content="HTML,CSS,Python,JavaScript,Django">
+  <meta name="author" content="Mahesh VM">
+  <title>{% block head_title %}Welcome Pythonistas{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+<div id="pagewrap">
+	<nav class="main-nav">
+		<h1><a href="{% url 'base' %}">Pythonistas</a></h1>
+		<div class="header">
+            {% if user.is_authenticated %}
+            <a href="{% url 'groups:all' %}">Groups</a>
+            <a href="{% url 'groups:create' %}">CreateGroup</a>
+            <a href="{% url 'posts:create' %}">Post</a>
+            <a href="{% url 'Home:logout' %}">Logout</a>
+            {% else %}
+            <a href="{% url 'groups:all' %}">Groups</a>
+            <a href="{% url 'Home:login' %}">LogIn</a>
+            <a href="{% url 'Home:signup' %}">SignUp</a>
+            <a href="{% url 'resume' %}">Aboutme</a>
+            {% endif %}
+		</div>
+    </nav>
+{% block body_block %}
+    <header class="main-header">
+
+
+        <div class="row">
+
+          <div class="column middle">
+<div class="floating-box">
+            <div class="header-content">
+      		<h1>Lorem Ipsum Dolor</h1>
+              <h3>Four HTML pages included</h3></div>
+            </div>
+
+
+        </div>
+        <div class="column side">
+
+          <aside>
+        <h2>Visitors <h3>{% now "SHORT_DATETIME_FORMAT" %}</h3></h2>
+          <script class="hide" type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=52njwh22f11&amp;m=7&amp;c=ff0000&amp;cr1=ffffff&amp;f=comic_sans_ms&amp;l=1&amp;v0=40&amp;z=17&amp;rx=40&amp;as=40" async="async"></script>
+        </aside>
+
+      </div>
+<div class="column middle">
+      <div class="floating-box">
+                  <div class="header-content">
+            		<h1>Lorem Ipsum Dolor</h1>
+                    <h3>Four HTML pages included</h3></div>
+                  </div></div>
+<div class="column middle">
+                  <div class="floating-box">
+                              <div class="header-content">
+                        		<h1>Lorem Ipsum Dolor</h1>
+                                <h3>Four HTML pages included</h3></div>
+                              </div></div>
+
+
+    </div>
+	</header>
+
+
+
+
+</div>
+{% endblock %}
+</body>
+</html>

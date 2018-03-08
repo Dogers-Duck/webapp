@@ -1,0 +1,66 @@
+{% extends "groups/group_base.html" %}
+{% load staticfiles %}
+{% block pregroup %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/group-detail.css' %}">
+	<style>
+
+	.button {
+	  padding: 10px 39px 10px 39px;
+	  color: #FFF;
+	  background-color: #f16529;
+	  font-size: 18px;
+	  text-align: center;
+	  font-style: normal;
+	  border-radius: 5px;
+	  width: 100%;
+	  border: 1px solid #e44d26;
+	  border-width: 1px 1px 3px;
+	  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+	  margin-bottom: 10px;
+		float: left;
+
+	}
+</style>
+</head>
+<div class="main-header">
+  <div class="floating-box">
+
+
+<h1>{{group.name}}</h1>
+<h2> Member Count: {{group.members.count}}</h2>
+
+
+
+{% if user.is_authenticated %}
+				{% if user in group.members.all %}
+					<a href="{% url 'groups:leave' slug=group.slug %}" class=""><span class="button"> Leave</span></a>
+				{% else %}
+					<a href="{% url 'groups:join' slug=group.slug %}" class=""><span class="button"> Join</span></a>
+				{% endif %}
+{% endif %}
+
+
+
+
+{% endblock %}
+
+
+{% block group_content %}
+
+
+	{% if group.posts.count == 0 %}
+	<h2>No posts in this group yet!</h2>
+
+	{% else %}
+
+		{% for post in group.posts.all %}
+			{% include "posts/_post.html" %}
+		{% endfor %}
+
+	{% endif %}
+
+{% endblock %}
+
+</div>
+</div>
