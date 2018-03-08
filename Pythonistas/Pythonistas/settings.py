@@ -25,7 +25,7 @@ SECRET_KEY = 'u4l_yvx9=2m*@_wvd+7p^4ws#htye+p+pf-zelm*ofk5nf+m90'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dogers.pythonanywhere.com']
 
 
 # Application definition
